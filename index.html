@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title></title>
+<title>Last FM</title>
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="css/main.css" />
 </head>
@@ -17,16 +17,18 @@
 </noscript>
 <div class="container" id="main-wrap">
 
-    <div class="col-md-3 text-center">
-        <img class="lastfm__avatar img-circle lastfm__img" />
-        <h1 class="lastfm__heading"></h1>
-        <form action="" class="lastfm-search__form">
-            <label class="hidden" for="lastfm-search__user">Enter Last FM user name</label>
-            <input id="lastfm-search__user" placeholder="Enter Last FM user name" type="text" />
-            <input id="lastfm-search__submit" type="submit" value="Search" />
+    <div class="col-md-4">
+        <img class="lastfm__avatar img-circle lastfm__img center-block" />
+        <h1 class="lastfm__heading text-center"></h1>
+        <form action="" class="lastfm-search__form form-inline text-center">
+            <div class="form-group">
+                <label class="hidden" for="lastfm-search__user">Enter Last FM user name</label>
+                <input class="form-control" id="lastfm-search__user" placeholder="Enter Last FM user name" type="text" />
+                <input class="btn btn-primary" id="lastfm-search__submit" type="submit" value="Search" />
+            </div>
         </form>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-8">
         <ul class="lastfm-top-artists__list">
         </ul>
     </div>
@@ -34,7 +36,6 @@
 </div><!--/container-->
 
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="js/url.js"></script>
 <script src="js/lastfm.js"></script>
 <script src="js/main.js"></script>
 </body>
