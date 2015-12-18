@@ -22,7 +22,7 @@
 .lastfm-top-artists__name,
 .artist-placeholder {
     align-items:center;
-    background:#000;
+    background:rgba(51, 122, 183, 0.75);
     color:#fff;
     display:flex;
     height:174px;
