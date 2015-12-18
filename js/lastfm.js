@@ -12,6 +12,7 @@ var LastFM = {
     },
 
     getTopArtists: function(user, period, limit, page) {
+        console.log(user);
         period = period ? period : 'overall';
         limit = limit ? limit : 20;
         page = page ? page : 1;
@@ -22,7 +23,6 @@ var LastFM = {
     },
 
     getUserInfo: function(user) {
-        user = user ? user : 'veryconscious';
         return $.ajax({
             url: LastFM.apiUrl + 'user.getinfo&user=' + user + '&api_key=' + LastFM.apiKey + '&format=json',
             dataType: 'json'
