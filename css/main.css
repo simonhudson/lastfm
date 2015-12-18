@@ -11,7 +11,6 @@
 .lastfm-top-artists__item {
     margin:0 10px 20px;
     position:relative;
-    /*width:20%;*/
 }
 .lastfm-top-artists__link:hover .lastfm-top-artists__name,
 .lastfm-top-artists__link:focus .lastfm-top-artists__name {
@@ -40,4 +39,7 @@
 }
 .year {
     display:block;
+}
+.lastfm-search__form {
+    margin-bottom:40px;
 }
