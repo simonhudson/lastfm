@@ -3,6 +3,7 @@ $(document).ready(function() {
     $.when(LastFM.getUserInfo(user)).then(function(data) {
         LastFM.displayHeading(data);
         $.when(LastFM.getTopArtists(user, '12month')).then(function(data) {
+            console.log(data);
             LastFM.displayTopArtists(data);
         });
     });

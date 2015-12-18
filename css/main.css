@@ -13,13 +13,15 @@
     position:relative;
     /*width:20%;*/
 }
-.lastfm-top-artists__link {
-}
 .lastfm-top-artists__link:hover .lastfm-top-artists__name,
 .lastfm-top-artists__link:focus .lastfm-top-artists__name {
     opacity:1;
 }
-.lastfm-top-artists__name {
+.lastfm-top-artists__img {
+    background:#888;
+}
+.lastfm-top-artists__name,
+.artist-placeholder {
     align-items:center;
     background:#000;
     color:#fff;
@@ -27,16 +29,19 @@
     height:174px;
     justify-content:center;
     left:0;
-    opacity:0;
     position:absolute;
     text-align:center;
     transition:opacity .3s linear;
     top:0;
-    width:100%;
+    width:174px;
 }
-.lastfm-top-artists__name p {
-
+.lastfm-top-artists__name {
+    opacity:0;
 }
 .year {
     display:block;
+}
+.artist-placeholder {
+    height:174px;
+    width:174px;
 }

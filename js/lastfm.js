@@ -45,7 +45,8 @@ var LastFM = {
         if (!data.error) {
             for (var i in data.topartists.artist) {
                 var item = data.topartists.artist[i];
-                listData += '<li class="lastfm-top-artists__item"><a class="lastfm-top-artists__link" href="' + item.url + '"><img class="img-circle" src="' + item.image[2]['#text'] + '" /><div class="lastfm-top-artists__name img-circle"><p>' + item.name + '</p></div></a></li>';
+                var imgUrl = item.image[2]['#text'] ? item.image[2]['#text'] : 'imgs/placeholder-note.svg';
+                listData += '<li class="lastfm-top-artists__item"><a class="lastfm-top-artists__link" href="' + item.url + '"><img class="img-circle lastfm-top-artists__img" src="' + imgUrl + '" /><div class="lastfm-top-artists__name img-circle"><p>' + item.name + '</p></div></a></li>';
             }
         }
         dataList.append(listData);
