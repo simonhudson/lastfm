@@ -12,7 +12,6 @@ var LastFM = {
     },
 
     getTopArtists: function(user, period, limit, page) {
-        console.log(user);
         period = period ? period : 'overall';
         limit = limit ? limit : 20;
         page = page ? page : 1;
@@ -33,8 +32,9 @@ var LastFM = {
         $('.lastfm__avatar').attr('src', '');
         $('.lastfm__heading').html('');
         if (!data.error) {
+            var imgUrl = data.user.image[2]['#text'] ? data.user.image[2]['#text'] : 'imgs/placeholder-user.svg';
             $('.lastfm__heading').html(data.error ? data.message : '<a href="' + data.user.url + '">' + (data.user.realname ? data.user.realname : data.user.name) + '</a>');
-            $('.lastfm__avatar').attr('src', data.user.image[2]['#text']);
+            $('.lastfm__avatar').attr('src', imgUrl);
         }
     },
 
@@ -42,14 +42,21 @@ var LastFM = {
         var dataList = $('.lastfm-top-artists__list'),
             listData = '';
         dataList.html('');
+        dataList.siblings('p').remove();
         if (!data.error) {
-            for (var i in data.topartists.artist) {
-                var item = data.topartists.artist[i];
-                var imgUrl = item.image[2]['#text'] ? item.image[2]['#text'] : 'imgs/placeholder-note.svg';
-                listData += '<li class="lastfm-top-artists__item"><a class="lastfm-top-artists__link" href="' + item.url + '"><img class="img-circle lastfm-top-artists__img" src="' + imgUrl + '" /><div class="lastfm-top-artists__name img-circle"><p><strong>' + item.name + '</strong></p></div></a></li>';
+            if (data.topartists.artist.length === 0) {
+                dataList.before('<p>No artists to show.</p>');
+            } else {
+                for (var i in data.topartists.artist) {
+                    var item = data.topartists.artist[i];
+                    var imgUrl = item.image[2]['#text'] ? item.image[2]['#text'] : 'imgs/placeholder-note.svg';
+                    listData += '<li class="lastfm-top-artists__item"><a class="lastfm-top-artists__link" href="' + item.url + '"><img class="img-circle lastfm__img" src="' + imgUrl + '" /><div class="lastfm-top-artists__name img-circle"><p><strong>' + item.name + '</strong></p></div></a></li>';
+                }
+                dataList.append(listData);
             }
+        } else {
+            dataList.before('<p>Could not retrieve data.</p>');
         }
-        dataList.append(listData);
     }
 
 };

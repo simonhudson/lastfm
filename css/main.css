@@ -17,7 +17,7 @@
 .lastfm-top-artists__link:focus .lastfm-top-artists__name {
     opacity:1;
 }
-.lastfm-top-artists__img {
+.lastfm__img {
     background:#888;
 }
 .lastfm-top-artists__name,
