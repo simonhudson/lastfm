@@ -12,9 +12,18 @@
     margin:0 10px 20px;
     position:relative;
 }
+.lastfm-top-artists__img {
+    border:5px solid #fff;
+    box-shadow:0 0 15px transparent;
+    transition:box-shadow .3s linear;
+}
 .lastfm-top-artists__link:hover .lastfm-top-artists__name,
 .lastfm-top-artists__link:focus .lastfm-top-artists__name {
     opacity:1;
+}
+.lastfm-top-artists__link:hover .lastfm-top-artists__img,
+.lastfm-top-artists__link:focus .lastfm-top-artists__img {
+    box-shadow:0 0 15px #000;
 }
 .lastfm__img {
     background:#888;
