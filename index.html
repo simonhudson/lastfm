@@ -4,20 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title></title>
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<style type="text/css">
-<!--
-.lastfm-recent-tracks__list img {
-    display:inline-block;
-    float:left;
-    margin-right:10px;
-}
-.lastfm-recent-tracks__item {
-    list-style:none outside;
-    padding:10px 0;
-}
-//-->
-</style>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="css/main.css" />
 </head>
 <body>
 <noscript>
@@ -27,92 +15,29 @@
         <p>This software requires your browser to have JavaScript enabled.</p>
     </div>
 </noscript>
-<div class="wrap" id="main-wrap">
+<div class="container" id="main-wrap">
 
-    <form action="" class="lastfm-search__form">
-        <label class="hidden" for="lastfm-search__user">Enter Last FM user name</label>
-        <input id="lastfm-search__user" placeholder="Enter Last FM user name" type="text" />
-        <input id="lastfm-search__submit" type="submit" value="Search" />
-    </form>
-    <h1 class="lastfm-heading"></h1>
+    <div class="col-md-3 text-center">
+        <img class="lastfm__avatar img-circle" />
+        <h1 class="lastfm__heading"></h1>
+        <h2 class="text-muted">2015</h2>
+    </div>
+    <div class="col-md-9">
+        <ul class="lastfm-top-artists__list">
+        </ul>
+    </div>
 
-    <ul class="lastfm-recent-tracks__list">
-    </ul>
-
-</div><!--/wrap-->
+</div><!--/container-->
 
 <!--libraries-->
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="js/url.js"></script>
+<script src="js/lastfm.js"></script>
+<script src="js/main.js"></script>
 <script>
 //<![CDATA[
 
-var LastFM = {
 
-    apiUrl: 'http://ws.audioscrobbler.com/2.0/?method=',
-    apiKey: '116b15d2e36e42394f0b542c0dded6bd',
-
-    getRecentTracks: function(user, limit) {
-        limit = limit ? limit : 20;
-        return $.ajax({
-            url: LastFM.apiUrl + 'user.getrecenttracks&user=' + user + '&api_key=' + LastFM.apiKey + '&format=json&limit=' + limit,
-            dataType: 'json'
-        });
-    },
-
-    getUserInfo: function(user) {
-        return $.ajax({
-            url: LastFM.apiUrl + 'user.getinfo&user=' + user + '&api_key=' + LastFM.apiKey + '&format=json',
-            dataType: 'json'
-        });
-    },
-
-    displayHeading: function(data) {
-        $('.lastfm-avatar').remove();
-        if (!data.error) {
-            $('.lastfm-heading').before('<img class="lastfm-avatar" src="" />');
-        }
-        $('.lastfm-heading').html(data.error ? data.message : '<a href="' + data.user.url + '">' + data.user.name + '</a>');
-        $('.lastfm-avatar').attr('src', data.user.image[1]['#text']);
-    },
-
-    displayRecentTracks: function(data) {
-        var recentTracksList = $('.lastfm-recent-tracks__list'),
-            listData = '';
-        recentTracksList.html('');
-        if (!data.error) {
-            for (var i in data.recenttracks.track) {
-                var item = data.recenttracks.track[i];
-                listData += '<li class="lastfm-recent-tracks__item"><img src="' + item.image[0]['#text'] + '" /><div><a href="' + item.url + '">' + item.name + '</a><br /><strong>' + item.artist['#text'] + '</strong></div></li>';
-            }
-        }
-        recentTracksList.append(listData);
-    }
-
-};
-
-var Url = {
-
-    updateUrlWithoutReload: function(newUrl, newTitle, state) {
-        if (history.pushState) {
-            var newTitle = newTitle ? newTitle : null,
-                state = state ? state : null;
-            history.pushState(state, newTitle, newUrl);
-        }
-    }
-
-};
-
-$('.lastfm-search__form').on('submit', function() {
-    var user = $('#lastfm-search__user').val();
-    $.when(LastFM.getUserInfo(user)).then(function(data) {
-        //LastFM.displayHeading(data);
-        Url.updateUrlWithoutReload(data.user.name);
-    });
-    $.when(LastFM.getRecentTracks(user)).then(function(data) {
-        LastFM.displayRecentTracks(data);
-    });
-    return false;
-});
 
 //]]>
 </script>
