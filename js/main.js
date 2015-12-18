@@ -10,7 +10,7 @@ function doDataFetch(user) {
     user = user ? user : 'veryconscious';
     $.when(LastFM.getUserInfo(user)).then(function(data) {
         LastFM.displayHeading(data);
-        $.when(LastFM.getTopArtists(user, '12month')).then(function(data) {
+        $.when(LastFM.getTopArtists(user)).then(function(data) {
             LastFM.displayTopArtists(data);
         });
     });
