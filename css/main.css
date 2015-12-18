@@ -38,6 +38,14 @@
     opacity:0;
     padding:0 20px;
 }
+.lastfm-top-artists__playcount {
+    border-top:1px solid rgba(255, 255, 255, 0.5);
+    display:block;
+    font-family:georgia, 'times new roman', serif;
+    font-style:italic;
+    margin-top:10px;
+    padding-top:10px;
+}
 .year {
     display:block;
 }
