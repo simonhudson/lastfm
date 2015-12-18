@@ -31,8 +31,9 @@ var LastFM = {
 
     displayHeading: function(data) {
         $('.lastfm__avatar').attr('src', '');
+        $('.lastfm__heading').html('');
         if (!data.error) {
-            $('.lastfm__heading').html(data.error ? data.message : '<a href="' + data.user.url + '">' + data.user.realname + '</a>');
+            $('.lastfm__heading').html(data.error ? data.message : '<a href="' + data.user.url + '">' + (data.user.realname ? data.user.realname : data.user.name) + '</a>');
             $('.lastfm__avatar').attr('src', data.user.image[2]['#text']);
         }
     },
