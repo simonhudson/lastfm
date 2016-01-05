@@ -1,34 +1,32 @@
 .container {
     padding-top:60px;
 }
-.lastfm-top-artists__list {
+.lastfm-data__list {
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
     list-style:none;
     padding:0;
 }
-.lastfm-top-artists__item {
+.lastfm-data__item {
     margin:0 10px 20px;
     position:relative;
 }
-.lastfm-top-artists__img {
+.lastfm-data__link:hover .lastfm-data__primary,
+.lastfm-data__link:focus .lastfm-data__primary {
+    opacity:1;
+}
+.lastfm-data__link:hover .lastfm-data__img,
+.lastfm-data__link:focus .lastfm-data__img {
+    box-shadow:0 0 15px #000;
+}
+.lastfm-data__img {
+    background:#888;
     border:5px solid #fff;
     box-shadow:0 0 15px transparent;
     transition:box-shadow .3s linear;
 }
-.lastfm-top-artists__link:hover .lastfm-top-artists__name,
-.lastfm-top-artists__link:focus .lastfm-top-artists__name {
-    opacity:1;
-}
-.lastfm-top-artists__link:hover .lastfm-top-artists__img,
-.lastfm-top-artists__link:focus .lastfm-top-artists__img {
-    box-shadow:0 0 15px #000;
-}
-.lastfm__img {
-    background:#888;
-}
-.lastfm-top-artists__name,
+.lastfm-data__primary,
 .artist-placeholder {
     align-items:center;
     background:rgba(51, 122, 183, 0.75);
@@ -43,11 +41,11 @@
     top:0;
     width:174px;
 }
-.lastfm-top-artists__name {
+.lastfm-data__primary {
     opacity:0;
     padding:0 20px;
 }
-.lastfm-top-artists__playcount {
+.lastfm-data__secondary {
     border-top:1px solid rgba(255, 255, 255, 0.5);
     display:block;
     font-family:georgia, 'times new roman', serif;

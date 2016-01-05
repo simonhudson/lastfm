@@ -4,7 +4,7 @@ var LastFM = {
     apiKey: '116b15d2e36e42394f0b542c0dded6bd',
 
     getRecentTracks: function(user, limit) {
-        limit = limit ? limit : 20;
+        limit = limit ? limit : 10;
         return $.ajax({
             url: LastFM.apiUrl + 'user.getrecenttracks&user=' + user + '&api_key=' + LastFM.apiKey + '&format=json&limit=' + limit,
             dataType: 'json'
@@ -39,7 +39,11 @@ var LastFM = {
     },
 
     displayTopArtists: function(data) {
-        var dataList = $('.lastfm-top-artists__list'),
+
+        clearData();
+        $('.data-area').prepend($('<ul class="lastfm-data__list"></ul>'));
+
+        var dataList = $('.lastfm-data__list'),
             listData = '';
         dataList.html('');
         dataList.siblings('p').remove();
@@ -50,7 +54,30 @@ var LastFM = {
                 for (var i in data.topartists.artist) {
                     var item = data.topartists.artist[i];
                     var imgUrl = item.image[2]['#text'] ? item.image[2]['#text'] : 'imgs/placeholder-note.svg';
-                    listData += '<li class="lastfm-top-artists__item"><a class="lastfm-top-artists__link" href="' + item.url + '"><img class="img-circle lastfm__img lastfm-top-artists__img" height="174" src="' + imgUrl + '" width="174" /><div class="lastfm-top-artists__name img-circle"><p><strong>' + item.name + '</strong><span class="lastfm-top-artists__playcount">' + item.playcount + ' plays</span></p></div></a></li>';
+                    listData += '<li class="lastfm-data__item"><a class="lastfm-data__link" href="' + item.url + '"><img class="img-circle lastfm-data__img" height="174" src="' + imgUrl + '" width="174" /><div class="lastfm-data__primary img-circle"><p><strong>' + item.name + '</strong><span class="lastfm-data__secondary">' + item.playcount + ' plays</span></p></div></a></li>';
+                }
+                dataList.append(listData);
+            }
+        } else {
+            dataList.before('<p>Could not retrieve data.</p>');
+        }
+    },
+
+    displayRecentTracks: function(data) {
+        clearData();
+        $('.data-area').prepend($('<ul class="lastfm-data__list"></ul>'));
+        var dataList = $('.lastfm-data__list'),
+            listData = '';
+        dataList.html('');
+        dataList.siblings('p').remove();
+        if (!data.error) {
+            if (data.recenttracks.track.length === 0) {
+                dataList.before('<p>No recent tracks to show.</p>');
+            } else {
+                for (var i in data.recenttracks.track) {
+                    var item = data.recenttracks.track[i];
+                    var imgUrl = item.image[2]['#text'] ? item.image[2]['#text'] : 'imgs/placeholder-note.svg';
+                    listData += '<li class="lastfm-data__item"><a class="lastfm-data__link" href="' + item.url + '"><img class="img-circle lastfm-data__img" height="174" src="' + imgUrl + '" width="174" /><div class="lastfm-data__primary img-circle"><p><strong>' + item.name + '</strong><span class="lastfm-data__secondary">' + item.artist['#text'] + '</span></p></div></a></li>';
                 }
                 dataList.append(listData);
             }
@@ -60,3 +87,6 @@ var LastFM = {
     }
 
 };
+function clearData(element) {
+    $('.data-area').html('');
+}

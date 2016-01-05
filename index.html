@@ -24,13 +24,22 @@
             <div class="form-group">
                 <label class="hidden" for="lastfm-search__user">Enter Last FM user name</label>
                 <input class="form-control" id="lastfm-search__user" placeholder="Enter Last FM user name" type="text" />
-                <input class="btn btn-primary" id="lastfm-search__submit" type="submit" value="Search" />
             </div>
+            <div class="form-group">
+                <label class="hidden" for="lastfm-search__fetchType">Show me</label>
+                <select class="form-control" id="lastfm-search__fetchType">
+                    <option value="recentTracks">Recent tracks</option>
+                    <option value="topArtists">Top artists (all time)</option>
+                </select>
+            </div>
+            <input class="btn btn-primary" id="lastfm-search__submit" type="submit" value="Search" />
         </form>
     </div>
-    <div class="col-md-8">
-        <ul class="lastfm-top-artists__list">
+    <div class="col-md-8 data-area">
+<!--         <ul class="lastfm-recent-tracks__list">
         </ul>
+        <ul class="lastfm-top-artists__list">
+        </ul> -->
     </div>
 
 </div><!--/container-->
