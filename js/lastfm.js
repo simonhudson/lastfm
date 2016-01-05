@@ -29,12 +29,13 @@ var LastFM = {
     },
 
     displayHeading: function(data) {
-        $('.lastfm__avatar').attr('src', '');
+        console.log(data);
+        $('.lastfm__avatar').attr('style', '');
         $('.lastfm__heading').html('');
         if (!data.error) {
-            var imgUrl = data.user.image[2]['#text'] ? data.user.image[2]['#text'] : 'imgs/placeholder-user.svg';
+            var imgUrl = data.user.image[2]['#text'] ? data.user.image[3]['#text'] : 'imgs/placeholder-user.svg';
             $('.lastfm__heading').html(data.error ? data.message : '<a href="' + data.user.url + '">' + (data.user.realname ? data.user.realname : data.user.name) + '</a>');
-            $('.lastfm__avatar').attr('src', imgUrl);
+            $('.lastfm__avatar').attr('style', 'background-image:url(' + imgUrl + ');');
         }
     },
 

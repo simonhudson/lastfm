@@ -1,6 +1,13 @@
 .container {
     padding-top:15px;
 }
+.lastfm__avatar {
+    height:140px;
+    width:100%;
+    background-position:0 25%;
+    background-repeat:no-repeat;
+    background-size:cover;
+}
 .lastfm-data__list {
     display:flex;
     flex-wrap:wrap;
