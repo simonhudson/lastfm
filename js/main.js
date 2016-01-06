@@ -26,5 +26,11 @@ function doDataFetch(user, fetchType) {
             break;
 
         }
+        doPoll(user, fetchType);
     });
+}
+function doPoll() {
+    setTimeout(function() {
+        self.doDataFetch();
+    }, 30000 );
 }
