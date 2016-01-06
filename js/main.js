@@ -31,6 +31,6 @@ function doDataFetch(user, fetchType) {
 }
 function doPoll() {
     setTimeout(function() {
-        self.doDataFetch();
+        doDataFetch();
     }, 30000 );
 }
