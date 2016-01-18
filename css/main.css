@@ -21,7 +21,8 @@
 }
 .lastfm-data__link:hover .lastfm-data__primary,
 .lastfm-data__link:focus .lastfm-data__primary {
-    opacity:1;
+    /*opacity:0.95;*/
+    background:rgba(51, 122, 183, 0.75);
 }
 .lastfm-data__link:hover .lastfm-data__img,
 .lastfm-data__link:focus .lastfm-data__img {
@@ -36,7 +37,7 @@
 .lastfm-data__primary,
 .artist-placeholder {
     align-items:center;
-    background:rgba(51, 122, 183, 0.75);
+    background:rgba(51, 122, 183, 0.35);
     color:#fff;
     display:flex;
     height:174px;
@@ -44,13 +45,14 @@
     left:0;
     position:absolute;
     text-align:center;
-    transition:opacity .3s linear;
+    transition:background .3s linear;
     top:0;
     width:174px;
 }
 .lastfm-data__primary {
-    opacity:0;
+    /*opacity:0.55;*/
     padding:0 20px;
+    text-shadow:1px 1px 1px #000;
 }
 .lastfm-data__secondary {
     border-top:1px solid rgba(255, 255, 255, 0.5);
