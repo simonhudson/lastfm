@@ -6,7 +6,18 @@ $('.lastfm-search__form').on('submit', function() {
     return false;
 });
 
+function showLoader() {
+    console.log('loading');
+    $('.data-area').append($('<span class="fa fa-spinner fa-spin"></span>'));
+}
+
+function removeLoader() {
+    $('.data-area').find('.fa-spinner').remove();
+}
+
 function doDataFetch(user, fetchType) {
+
+    showLoader();
 
     fetchType = fetchType ? fetchType : 'recentTracks';
     user = user ? user : 'veryconscious';
@@ -26,6 +37,7 @@ function doDataFetch(user, fetchType) {
             break;
 
         }
+        showLoader();
         doPoll(user, fetchType);
     });
 }
