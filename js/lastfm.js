@@ -4,7 +4,7 @@ var LastFM = {
     apiKey: '116b15d2e36e42394f0b542c0dded6bd',
 
     getRecentTracks: function(user, limit) {
-        limit = limit ? limit : 10;
+        limit = limit ? limit : 20;
         return $.ajax({
             url: LastFM.apiUrl + 'user.getrecenttracks&user=' + user + '&api_key=' + LastFM.apiKey + '&format=json&limit=' + limit,
             dataType: 'json'
