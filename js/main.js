@@ -7,8 +7,8 @@ $('.lastfm-search__form').on('submit', function() {
 });
 
 function showLoader() {
-    console.log('loading');
-    $('.data-area').append($('<span class="fa fa-spinner fa-spin"></span>'));
+    removeLoader();
+    $('.data-area').append($('<span class="fa fa-spinner fa-spin fa-3x"></span>'));
 }
 
 function removeLoader() {
@@ -37,7 +37,7 @@ function doDataFetch(user, fetchType) {
             break;
 
         }
-        showLoader();
+        removeLoader();
         doPoll(user, fetchType);
     });
 }
