@@ -15,9 +15,10 @@ function removeLoader() {
     $('.data-area').find('.fa-spinner').remove();
 }
 
-function doDataFetch(user, fetchType) {
+function doDataFetch(isPoll, user, fetchType) {
 
-    showLoader();
+    if (!isPoll)
+        showLoader();
 
     fetchType = fetchType ? fetchType : 'recentTracks';
     user = user ? user : 'veryconscious';
@@ -43,6 +44,6 @@ function doDataFetch(user, fetchType) {
 }
 function doPoll() {
     setTimeout(function() {
-        doDataFetch();
+        doDataFetch(true);
     }, 30000 );
 }
